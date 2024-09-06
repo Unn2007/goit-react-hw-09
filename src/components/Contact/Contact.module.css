@@ -1,0 +1,19 @@
+.contact {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  border: 2px solid black;
+  border-radius: 8px;
+  padding: 5px 10px;
+}
+.fieldContainer {
+  display: flex;
+  column-gap: 10px;
+  align-items: center;
+}
+.contact p {
+  margin: 0px 0px;
+}
+
+.css.buttonContainer {
+}

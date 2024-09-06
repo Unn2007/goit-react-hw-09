@@ -68,7 +68,7 @@ export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
  * headers: Authorization: Bearer token
  */
 export const refreshUser = createAsyncThunk(
-  'auth/refresh',
+  'auth/current',
   async (_, thunkAPI) => {
     // Reading the token from the state via getState()
     const state = thunkAPI.getState();
