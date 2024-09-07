@@ -17,7 +17,7 @@ const contactsSlice = createSlice({
     items: [],
     loading: false,
     error: null,
-    isConfirmModal:undefined,
+    isConfirmModal:"",
     
   },
   reducers: {
@@ -25,7 +25,7 @@ const contactsSlice = createSlice({
       state.isConfirmModal = action.payload; 
     },
     hideConfirmModal: (state) => {
-      state.isConfirmModal = undefined; 
+      state.isConfirmModal = ""; 
     },
     
   },

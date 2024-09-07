@@ -13,8 +13,8 @@ function Contact({ data: { id, name, number } }) {
   const handleDelete = () => {
     
     dispatch(showConfirmModal(id));
-    console.log("id=",id)
-    console.log("sel=",selectedContact)
+    
+    
   }
   return (
     <>
@@ -33,7 +33,7 @@ function Contact({ data: { id, name, number } }) {
         <button onClick={handleDelete}>Delete</button>
       </div>
     </div>
-    <div>{selectedContact && <ConfirmModal/>}</div>
+    <div>{(id===selectedContact) && <ConfirmModal/>}</div>
     </>
   );
 }

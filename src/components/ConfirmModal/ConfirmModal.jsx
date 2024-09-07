@@ -24,7 +24,8 @@ const customStyles = {
     Modal.setAppElement("#root");
     const dispatch = useDispatch();
     const selectedContact = useSelector(selectConfirmModal)
-    const modalIsOpen = !selectedContact;
+    const modalIsOpen = !!selectedContact;
+    console.log(modalIsOpen)
 const closeModal = () =>{
   dispatch(hideConfirmModal())
   
