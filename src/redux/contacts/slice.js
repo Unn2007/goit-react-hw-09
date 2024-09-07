@@ -17,6 +17,17 @@ const contactsSlice = createSlice({
     items: [],
     loading: false,
     error: null,
+    isConfirmModal:undefined,
+    
+  },
+  reducers: {
+    showConfirmModal: (state,action) => {
+      state.isConfirmModal = action.payload; 
+    },
+    hideConfirmModal: (state) => {
+      state.isConfirmModal = undefined; 
+    },
+    
   },
   extraReducers: (builder) => {
     builder
@@ -47,4 +58,5 @@ const contactsSlice = createSlice({
   },
 });
 
+export const { showConfirmModal, hideConfirmModal } = contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;

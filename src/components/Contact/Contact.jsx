@@ -1,12 +1,23 @@
-import { useDispatch } from "react-redux";
-import { deleteContact } from "../../redux/contacts/operations";
+import { useDispatch,useSelector } from "react-redux";
+import {showConfirmModal} from '../../redux/contacts/slice'
 import css from "./Contact.module.css";
 import { FaPhoneAlt, FaUser } from "react-icons/fa";
+import ConfirmModal from '../../components/ConfirmModal/ConfirmModal'
+import { selectConfirmModal} from '../../redux/contacts/selectors';
+
 
 function Contact({ data: { id, name, number } }) {
   const dispatch = useDispatch();
-  const handleDelete = () => dispatch(deleteContact(id));
+  const selectedContact=useSelector(selectConfirmModal);
+  
+  const handleDelete = () => {
+    
+    dispatch(showConfirmModal(id));
+    console.log("id=",id)
+    console.log("sel=",selectedContact)
+  }
   return (
+    <>
     <div className={css.contact}>
       <div>
         <div className={css.fieldContainer}>
@@ -22,6 +33,8 @@ function Contact({ data: { id, name, number } }) {
         <button onClick={handleDelete}>Delete</button>
       </div>
     </div>
+    <div>{selectedContact && <ConfirmModal/>}</div>
+    </>
   );
 }
 

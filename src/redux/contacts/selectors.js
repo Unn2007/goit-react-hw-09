@@ -6,7 +6,7 @@ export const selectContacts = (state) => state.contacts.items;
 
 
 export const selectIsLoading = (state) => state.contacts.loading;
-
+export const selectConfirmModal = (state) => state.contacts.isConfirmModal;
 export const selectError = (state) => state.contacts.error;
 
 export const selectVisibleContacts = createSelector(

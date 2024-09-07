@@ -10,7 +10,6 @@ import { selectIsRefreshing } from '../redux/auth/selectors';
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
 const RegisterPage = lazy(() => import('../pages/RegisterPage/RegisterPage'));
 const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));
-// const TasksPage = lazy(() => import('../pages/TasksPage/TasksPage'));
 const ContactsPage = lazy(() => import('../pages/ContactsPage/ContactsPage'));
 
 export const App = () => {
@@ -42,7 +41,7 @@ export const App = () => {
         <Route
           path="/contacts"
           element={
-            // <PrivateRoute redirectTo="/login" component={<TasksPage />} />
+            
             <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
 
           }
