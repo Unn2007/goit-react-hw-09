@@ -29,10 +29,10 @@ const contactsSlice = createSlice({
       state.isConfirmModal = ""; 
     },
     showEditModal: (state,action) => {
-      state.isConfirmModal = action.payload; 
+      state.isEditModal = action.payload; 
     },
     hideEditModal: (state) => {
-      state.isConfirmModal = ""; 
+      state.isEditModal = ""; 
     },
     
   },
@@ -71,11 +71,12 @@ const contactsSlice = createSlice({
         );
         state.items[index].name=action.payload.name;
         state.items[index].number=action.payload.number;
+        state.isEditModal="";
       
       })
       .addCase(editContact.rejected, handleRejected)
   },
 });
 
-export const { showConfirmModal, hideConfirmModal } = contactsSlice.actions;
+export const { showConfirmModal, hideConfirmModal,showEditModal,hideEditModal } = contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;

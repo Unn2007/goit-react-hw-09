@@ -3,9 +3,10 @@ import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { ErrorMessage } from "formik";
 import css from "./ContactForm.module.css";
-import { useDispatch } from "react-redux";
-import { addContact } from "../../redux/contacts/operations";
-import toast from 'react-hot-toast';
+import { useDispatch, useSelector } from "react-redux";
+import { addContact, editContact } from "../../redux/contacts/operations";
+import { selectEditModal } from "../../redux/contacts/selectors";
+import toast from "react-hot-toast";
 
 const FeedbackSchema = Yup.object().shape({
   username: Yup.string()
@@ -18,26 +19,50 @@ const FeedbackSchema = Yup.object().shape({
     .required("Required"),
 });
 
-function ContactForm({isEditContact}) {
- 
+function ContactForm({ isEditContact }) {
   const dispatch = useDispatch();
+  const selectedContact = useSelector(selectEditModal)
+ 
   const handleSubmit = (values, actions) => {
-    dispatch(addContact({ name: values.username, number: values.telNumber })).then((result) => {
+    dispatch(
+      addContact({ name: values.username, number: values.telNumber })
+    ).then((result) => {
       if (addContact.fulfilled.match(result)) {
-        toast.success('Контакт успішно доданий',{duration: 2000,
-          position: 'top-center'})
-        
+        toast.success("Контакт успішно доданий", {
+          duration: 2000,
+          position: "top-center",
+        });
       }
     });
 
     actions.resetForm();
   };
+
+  
+  const handleEdit = (values, actions) => {
+   
+    
+    dispatch(
+      editContact({
+        contactId: selectedContact,
+        contact: { name: values.username, number: values.telNumber },
+      })
+    ).then((result) => {
+      if (editContact.fulfilled.match(result)) {
+        toast.success("Контакт успішно змінений", {
+          duration: 2000,
+          position: "top-center",
+        });
+      }
+    });
+  };
+
   const usernameFieldId = useId();
   const telNumberFieldId = useId();
   return (
     <Formik
       initialValues={{ username: "", telNumber: "" }}
-      onSubmit={handleSubmit}
+      onSubmit={isEditContact ? handleEdit : handleSubmit}
       validationSchema={FeedbackSchema}
     >
       <Form className={css.form}>
@@ -61,8 +86,8 @@ function ContactForm({isEditContact}) {
         </div>
 
         <div className={css.buttonContainer}>
-          {!isEditContact&&<button type="submit">Add contact</button>}
-          {isEditContact&&<button type="submit">Confirm changes</button>}
+          {!isEditContact && <button type="submit">Add contact</button>}
+          {isEditContact && <button type="submit">Confirm changes</button>}
         </div>
       </Form>
     </Formik>
