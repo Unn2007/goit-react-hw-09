@@ -1,10 +1,10 @@
 import { useDispatch,useSelector} from 'react-redux';
-import { selectConfirmModal } from '../../redux/contacts/selectors';
-import { deleteContact } from "../../redux/contacts/operations";
-import {hideConfirmModal} from '../../redux/contacts/slice'
+// import { selectConfirmModal } from '../../redux/contacts/selectors';
+// import { deleteContact } from "../../redux/contacts/operations";
+// import {hideConfirmModal} from '../../redux/contacts/slice'
 import Modal from "react-modal";
 import { FaRegWindowClose } from "react-icons/fa";
-import css from "./ConfirmModal.module.css";
+import css from "ModalWindow.module.css";
 
 
 const customStyles = {
@@ -21,26 +21,26 @@ const customStyles = {
     },
   };
 
-  function ConfirmModal() {
+  function ModalWindow({children,operation,selector,reducer}) {
     Modal.setAppElement("#root");
     const dispatch = useDispatch();
-    const selectedContact = useSelector(selectConfirmModal)
+    const selectedContact = useSelector(selector)
     const modalIsOpen = !!selectedContact;
    
 const closeModal = () =>{
-  dispatch(hideConfirmModal())
+  dispatch(reducer)
   
 }
-const handleDelete = () => {
-  dispatch(deleteContact(selectedContact)).then((result) => {
-  if (deleteContact.fulfilled.match(result)) {
-    toast.success('Контакт успішно видалений',{duration: 2000,
-      position: 'top-center'})
+// const handleDelete = () => {
+//   dispatch(operation(selectedContact)).then((result) => {
+//   if (operation.fulfilled.match(result)) {
+//     toast.success('Контакт успішно видалений',{duration: 2000,
+//       position: 'top-center'})
     
-  }
-})  
-closeModal()
-};
+//   }
+// })  
+// closeModal()
+// };
 
 
     return (
