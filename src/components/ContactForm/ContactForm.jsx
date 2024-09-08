@@ -18,7 +18,7 @@ const FeedbackSchema = Yup.object().shape({
     .required("Required"),
 });
 
-function ContactForm() {
+function ContactForm({isEditContact}) {
  
   const dispatch = useDispatch();
   const handleSubmit = (values, actions) => {
@@ -61,7 +61,8 @@ function ContactForm() {
         </div>
 
         <div className={css.buttonContainer}>
-          <button type="submit">Add contact</button>
+          {!isEditContact&&<button type="submit">Add contact</button>}
+          {isEditContact&&<button type="submit">Confirm changes</button>}
         </div>
       </Form>
     </Formik>

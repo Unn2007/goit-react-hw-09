@@ -1,21 +1,19 @@
 import { useDispatch,useSelector } from "react-redux";
-import {showConfirmModal} from '../../redux/contacts/slice'
+import {showConfirmModal,showEditModal} from '../../redux/contacts/slice'
 import css from "./Contact.module.css";
 import { FaPhoneAlt, FaUser } from "react-icons/fa";
 import ConfirmModal from '../../components/ConfirmModal/ConfirmModal'
-import { selectConfirmModal} from '../../redux/contacts/selectors';
+import EditModal from "../EditModal/EditModal";
+import { selectConfirmModal,selectEditModal} from '../../redux/contacts/selectors';
 
 
 function Contact({ data: { id, name, number } }) {
   const dispatch = useDispatch();
   const selectedContact=useSelector(selectConfirmModal);
-  
-  const handleDelete = () => {
-    
-    dispatch(showConfirmModal(id));
-    
-    
-  }
+  const editedContact=useSelector(selectEditModal);
+ 
+  const handleEdit = ()=>{dispatch(showEditModal(id))};
+  const handleDelete = () => {dispatch(showConfirmModal(id))}
   return (
     <>
     
@@ -32,9 +30,11 @@ function Contact({ data: { id, name, number } }) {
       </div>
       <div className={css.buttonContainer}>
         <button onClick={handleDelete}>Delete</button>
+        <button onClick={handleEdit}>Edit</button>
       </div>
     </div>
     <div>{(id===selectedContact) && <ConfirmModal/>}</div>
+    <div>{(id===editedContact) && <EditModal/>}</div>
     </>
   );
 }

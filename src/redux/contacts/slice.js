@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { logOut } from '../auth/operations';
-import { fetchContacts, addContact, deleteContact } from "./operations";
+import { fetchContacts, addContact, deleteContact, editContact } from "./operations";
 
 const handlePending = (state) => {
   state.loading = true;
@@ -18,6 +18,7 @@ const contactsSlice = createSlice({
     loading: false,
     error: null,
     isConfirmModal:"",
+    isEditModal:"",
     
   },
   reducers: {
@@ -25,6 +26,12 @@ const contactsSlice = createSlice({
       state.isConfirmModal = action.payload; 
     },
     hideConfirmModal: (state) => {
+      state.isConfirmModal = ""; 
+    },
+    showEditModal: (state,action) => {
+      state.isConfirmModal = action.payload; 
+    },
+    hideEditModal: (state) => {
       state.isConfirmModal = ""; 
     },
     
@@ -54,7 +61,19 @@ const contactsSlice = createSlice({
         );
         state.items.splice(index, 1);
       })
-      .addCase(deleteContact.rejected, handleRejected);
+      .addCase(deleteContact.rejected, handleRejected)
+      .addCase(editContact.pending, handlePending)
+      .addCase(editContact.fulfilled, (state, action) => {
+        state.loading = false;
+        state.error = null;
+        const index = state.items.findIndex(
+          (contact) => contact.id === action.payload.id
+        );
+        state.items[index].name=action.payload.name;
+        state.items[index].number=action.payload.number;
+      
+      })
+      .addCase(editContact.rejected, handleRejected)
   },
 });
 

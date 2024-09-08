@@ -2,7 +2,7 @@ import css from "./ContactList.module.css";
 import Contact from "../Contact/Contact";
 import { useSelector } from "react-redux";
 import { selectVisibleContacts } from "../../redux/contacts/selectors";
-import toast, { Toaster } from 'react-hot-toast';
+import  { Toaster } from 'react-hot-toast';
 function ContactList() {
   const visibleContacts = useSelector(selectVisibleContacts);
   const contactItems = visibleContacts.map((item) => {
