@@ -5,7 +5,7 @@ import {hideConfirmModal} from '../../redux/contacts/slice'
 import Modal from "react-modal";
 import { FaRegWindowClose } from "react-icons/fa";
 import css from "./ConfirmModal.module.css";
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 
 const customStyles = {
     overlay: {
@@ -60,9 +60,16 @@ closeModal()
             </button>
              
             <h2 className={css.description}>A You sure?</h2>
+            <div>
             <button onClick={handleDelete} >
               Yes
             </button>     
+            <button onClick={()=>closeModal()} >
+            No
+            </button>     
+
+            </div>
+            
           </div>
         </Modal>
         

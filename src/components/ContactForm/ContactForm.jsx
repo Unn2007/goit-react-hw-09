@@ -5,7 +5,7 @@ import { ErrorMessage } from "formik";
 import css from "./ContactForm.module.css";
 import { useDispatch } from "react-redux";
 import { addContact } from "../../redux/contacts/operations";
-
+import toast from 'react-hot-toast';
 
 const FeedbackSchema = Yup.object().shape({
   username: Yup.string()
@@ -22,7 +22,13 @@ function ContactForm() {
  
   const dispatch = useDispatch();
   const handleSubmit = (values, actions) => {
-    dispatch(addContact({ name: values.username, number: values.telNumber }));
+    dispatch(addContact({ name: values.username, number: values.telNumber })).then((result) => {
+      if (addContact.fulfilled.match(result)) {
+        toast.success('Контакт успішно доданий',{duration: 2000,
+          position: 'top-center'})
+        
+      }
+    });
 
     actions.resetForm();
   };
