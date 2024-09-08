@@ -5,6 +5,7 @@ import {hideConfirmModal} from '../../redux/contacts/slice'
 import Modal from "react-modal";
 import { FaRegWindowClose } from "react-icons/fa";
 import css from "./ConfirmModal.module.css";
+import toast, { Toaster } from 'react-hot-toast';
 
 const customStyles = {
     overlay: {
@@ -25,26 +26,35 @@ const customStyles = {
     const dispatch = useDispatch();
     const selectedContact = useSelector(selectConfirmModal)
     const modalIsOpen = !!selectedContact;
-    console.log(modalIsOpen)
+   
 const closeModal = () =>{
   dispatch(hideConfirmModal())
   
 }
 const handleDelete = () => {
-  dispatch(deleteContact(selectedContact))
+  dispatch(deleteContact(selectedContact)).then((result) => {
+  if (deleteContact.fulfilled.match(result)) {
+    toast.success('Контакт успішно видалений',{duration: 2000,
+      position: 'top-center'})
+    
+  }
+})  
 closeModal()
 };
 
 
     return (
       <div>
+        
         <Modal
           isOpen={modalIsOpen}
           onRequestClose={closeModal}
           style={customStyles}
           contentLabel="Modal"
         >
+          
           <div className={css.modalContent}>
+          
             <button onClick={closeModal} className={css.closeButton}>
               <FaRegWindowClose />
             </button>
@@ -55,6 +65,7 @@ closeModal()
             </button>     
           </div>
         </Modal>
+        
       </div>
     );
   }

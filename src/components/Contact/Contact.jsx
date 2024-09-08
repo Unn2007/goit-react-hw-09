@@ -18,6 +18,7 @@ function Contact({ data: { id, name, number } }) {
   }
   return (
     <>
+    
     <div className={css.contact}>
       <div>
         <div className={css.fieldContainer}>
