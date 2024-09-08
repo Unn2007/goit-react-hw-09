@@ -1,0 +1,39 @@
+.modalContent {
+    width: 300px;
+    height: 300px;
+      position: relative;
+    
+      margin: 0 auto;
+      padding: 2rem;
+      text-align: center;
+    
+      color: black;
+    }
+    
+    
+    .closeButton {
+      position: absolute;
+      top: 0;
+      right: 0;
+    
+      padding: 0px 0px;
+    
+      background-color: transparent;
+      color: black;
+    }
+    
+    .modalContent button:hover {
+      border: none;
+      border-color: transparent;
+    }
+    
+    
+    
+    
+    
+    
+    
+   
+    
+    
+    

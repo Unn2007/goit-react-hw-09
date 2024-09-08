@@ -1,80 +1,37 @@
-import { useDispatch,useSelector} from 'react-redux';
-import { selectConfirmModal } from '../../redux/contacts/selectors';
+import ModalWindow from "../ModalWindow/ModalWindow";
+import { useSelector, useDispatch } from "react-redux";
+import { selectConfirmModal } from "../../redux/contacts/selectors";
 import { deleteContact } from "../../redux/contacts/operations";
-import {hideConfirmModal} from '../../redux/contacts/slice'
-import Modal from "react-modal";
-import { FaRegWindowClose } from "react-icons/fa";
+import { hideConfirmModal } from "../../redux/contacts/slice";
+import { toast } from "react-hot-toast";
 import css from "./ConfirmModal.module.css";
 
-
-const customStyles = {
-    overlay: {
-      backgroundColor: "rgba(64, 64, 64, 0.75)",
-    },
-    content: {
-      top: "50%",
-      left: "50%",
-      right: "auto",
-      bottom: "auto",
-      marginRight: "-50%",
-      transform: "translate(-50%, -50%)",
-    },
+function ConfirmModal() {
+  const dispatch = useDispatch();
+  const hideModal = () => {
+    dispatch(hideConfirmModal());
+  };
+  const selectedContact = useSelector(selectConfirmModal);
+  const handleDelete = () => {
+    dispatch(deleteContact(selectedContact)).then((result) => {
+      if (deleteContact.fulfilled.match(result)) {
+        toast.success("Контакт успішно видалений", {
+          duration: 2000,
+          position: "top-center",
+        });
+      }
+    });
   };
 
-  function ConfirmModal() {
-    Modal.setAppElement("#root");
-    const dispatch = useDispatch();
-    const selectedContact = useSelector(selectConfirmModal)
-    const modalIsOpen = !!selectedContact;
-   
-const closeModal = () =>{
-  dispatch(hideConfirmModal())
-  
-}
-const handleDelete = () => {
-  dispatch(deleteContact(selectedContact)).then((result) => {
-  if (deleteContact.fulfilled.match(result)) {
-    toast.success('Контакт успішно видалений',{duration: 2000,
-      position: 'top-center'})
-    
-  }
-})  
-closeModal()
-};
-
-
-    return (
+  return (
+    <ModalWindow selector={selectedContact} closeModal={hideModal}>
+      <h2 className={css.description}>A You sure?</h2>
       <div>
-        
-        <Modal
-          isOpen={modalIsOpen}
-          onRequestClose={closeModal}
-          style={customStyles}
-          contentLabel="Modal"
-        >
-          
-          <div className={css.modalContent}>
-          
-            <button onClick={closeModal} className={css.closeButton}>
-              <FaRegWindowClose />
-            </button>
-             
-            <h2 className={css.description}>A You sure?</h2>
-            <div>
-            <button onClick={handleDelete} >
-              Yes
-            </button>     
-            <button onClick={()=>closeModal()} >
-            No
-            </button>     
-
-            </div>
-            
-          </div>
-        </Modal>
-        
+        <button onClick={handleDelete}>Yes</button>
+        <button onClick={() => hideModal()}>No</button>
       </div>
-    );
-  }
-  
-  export default ConfirmModal;
+    </ModalWindow>
+  );
+}
+
+export default ConfirmModal;
