@@ -1,9 +1,25 @@
 .form {
-  width: 320px;
+  max-width: 300px;
+  border: 2px solid black;
+  border-radius: 8px;
+  padding: 20px 20px;
+  margin-bottom: 25px;
 }
-
-.label {
+.fieldContainer {
   display: flex;
   flex-direction: column;
-  margin-bottom: 16px;
+  column-gap: 10px;
+  margin-bottom: 15px;
+}
+
+.buttonContainer {
+  display: flex;
+}
+
+.buttonContainer button {
+  margin: 0 auto;
+}
+.error {
+  font-weight: 700;
+  color: red;
 }
