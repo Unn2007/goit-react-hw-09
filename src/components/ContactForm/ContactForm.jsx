@@ -5,7 +5,7 @@ import { ErrorMessage } from "formik";
 import css from "./ContactForm.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { addContact, editContact } from "../../redux/contacts/operations";
-import { selectEditModal } from "../../redux/contacts/selectors";
+import { selectEditModal,selectEditedContactData } from "../../redux/contacts/selectors";
 import toast from "react-hot-toast";
 
 const FeedbackSchema = Yup.object().shape({
@@ -19,9 +19,14 @@ const FeedbackSchema = Yup.object().shape({
     .required("Required"),
 });
 
+
 function ContactForm({ isEditContact }) {
   const dispatch = useDispatch();
   const selectedContact = useSelector(selectEditModal)
+  const selectedContactData = useSelector(selectEditedContactData)
+  const initialValues=(selectedContact) ? 
+  {username: selectedContactData.name, telNumber: selectedContactData.number} :
+  { username: "", telNumber: "" }
  
   const handleSubmit = (values, actions) => {
     dispatch(
@@ -61,7 +66,7 @@ function ContactForm({ isEditContact }) {
   const telNumberFieldId = useId();
   return (
     <Formik
-      initialValues={{ username: "", telNumber: "" }}
+      initialValues={initialValues}
       onSubmit={isEditContact ? handleEdit : handleSubmit}
       validationSchema={FeedbackSchema}
     >

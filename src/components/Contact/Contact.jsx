@@ -12,7 +12,7 @@ function Contact({ data: { id, name, number } }) {
   const selectedContact=useSelector(selectConfirmModal);
   const editedContact=useSelector(selectEditModal);
  
-  const handleEdit = ()=>{dispatch(showEditModal(id))};
+  const handleEdit = ()=>{dispatch(showEditModal({id,name,number}))};
   const handleDelete = () => {dispatch(showConfirmModal(id))}
   return (
     <>

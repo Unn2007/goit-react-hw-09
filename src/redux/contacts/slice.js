@@ -18,7 +18,7 @@ const contactsSlice = createSlice({
     loading: false,
     error: null,
     isConfirmModal:"",
-    isEditModal:"",
+    isEditModal:{},
     
   },
   reducers: {
@@ -32,7 +32,7 @@ const contactsSlice = createSlice({
       state.isEditModal = action.payload; 
     },
     hideEditModal: (state) => {
-      state.isEditModal = ""; 
+      state.isEditModal = {}; 
     },
     
   },
