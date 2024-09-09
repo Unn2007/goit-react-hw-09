@@ -49,7 +49,9 @@ export const LoginForm = () => {
       initialValues={initialValues}
       onSubmit={handleSubmit}
       validationSchema={FeedbackSchema}>
+       
       <Form className={css.form} autoComplete="off">
+      <h2>Log In</h2>
       <div className={css.fieldContainer}>
         <label className={css.label} htmlFor={emailFieldId}>
           Email
