@@ -26,7 +26,6 @@ export const LoginForm = () => {
   const handleSubmit = (values, actions) => {
     console.log(values);
 
-    
     dispatch(
       logIn({
         email: values.email,
@@ -35,10 +34,10 @@ export const LoginForm = () => {
     )
       .unwrap()
       .then(() => {
-        console.log('login success');
+        console.log("login success");
       })
       .catch(() => {
-        console.log('login error');
+        console.log("login error");
       });
 
     actions.resetForm();
@@ -48,26 +47,42 @@ export const LoginForm = () => {
     <Formik
       initialValues={initialValues}
       onSubmit={handleSubmit}
-      validationSchema={FeedbackSchema}>
-       
+      validationSchema={FeedbackSchema}
+    >
       <Form className={css.form} autoComplete="off">
-      <h2>Log In</h2>
-      <div className={css.fieldContainer}>
-        <label className={css.label} htmlFor={emailFieldId}>
-          Email
-        </label>
-        <Field type="email" name="email" id={emailFieldId} />
-        <ErrorMessage name="email" component="span"  className={css.error} />
+        <h2 className={css.formHeader}>Log In</h2>
+        <div className={css.fieldContainer}>
+          <label className={css.label} htmlFor={emailFieldId}>
+            Email
+          </label>
+          <Field
+            type="email"
+            name="email"
+            id={emailFieldId}
+            className={css.field}
+          />
+          <ErrorMessage name="email" component="span" className={css.error} />
         </div>
         <div className={css.fieldContainer}>
-        <label className={css.label} htmlFor={passwordFieldId}>
-          Password
-        </label>
-        <Field type="password" name="password" id={passwordFieldId} />
-        <ErrorMessage name="password" component="span"  className={css.error} />
+          <label className={css.label} htmlFor={passwordFieldId}>
+            Password
+          </label>
+          <Field
+            type="password"
+            name="password"
+            id={passwordFieldId}
+            className={css.field}
+          />
+          <ErrorMessage
+            name="password"
+            component="span"
+            className={css.error}
+          />
         </div>
         <div className={css.buttonContainer}>
-        <button type="submit">Log In</button>
+          <button type="submit" className={css.button}>
+            Log In
+          </button>
         </div>
       </Form>
     </Formik>
