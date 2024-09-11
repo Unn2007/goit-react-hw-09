@@ -21,7 +21,7 @@ function Contact({ data: { id, name, number } }) {
       <div className={css.contactInfo}>
         <div className={css.fieldContainer}>
           <FaUser className={css.icon} />
-          <p>{name}</p>
+          <p className={css.name}>{name}</p>
         </div>
         <div className={css.fieldContainer}>
           <FaPhoneAlt className={css.icon} />

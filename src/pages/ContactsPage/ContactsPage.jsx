@@ -6,9 +6,10 @@ import  ContactForm  from '../../components/ContactForm/ContactForm';
 import SearcBox from '../../components/SearchBox/SearchBox'
 import { fetchContacts } from '../../redux/contacts/operations';
 import { selectIsLoading,selectConfirmModal } from '../../redux/contacts/selectors';
+import css from './ContactsPage.module.css'
 // import ConfirmModal from '../../components/ConfirmModal/ConfirmModal'
 
-export default function TasksPage() {
+export default function ContactsPage() {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
   // const isConfirmModal=useSelector(selectConfirmModal);
@@ -20,11 +21,20 @@ export default function TasksPage() {
   return (
     <>
       <DocumentTitle>Your contacts</DocumentTitle>
+      <div>{isLoading && 'Request in progress...'}</div>
+      <div className={css.container}>
+      <div>
       <ContactForm />
       <SearcBox/>
-      <div>{isLoading && 'Request in progress...'}</div>
-      <ContactList />
-      {/* <div>{isConfirmModal && <ConfirmModal/>}</div> */}
+
+
+      </div >
+      
+      <div className={css.list}>
+      <ContactList  />
+      </div>
+      </div>
+    
       
 
     </>
