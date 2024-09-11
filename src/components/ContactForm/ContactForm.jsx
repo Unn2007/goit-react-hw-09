@@ -71,18 +71,20 @@ function ContactForm({ isEditContact }) {
       validationSchema={FeedbackSchema}
     >
       <Form className={css.form}>
+      <h2 className={css.formHeader}>Add contact</h2>
         <div className={css.fieldContainer}>
-          <label htmlFor={usernameFieldId}>Name</label>
-          <Field type="text" name="username" id={usernameFieldId} />
+          <label htmlFor={usernameFieldId} className={css.label}>Name</label>
+          <Field type="text" name="username" id={usernameFieldId} className={css.field} />
           <ErrorMessage
             name="username"
             component="span"
             className={css.error}
+            
           />
         </div>
         <div className={css.fieldContainer}>
-          <label htmlFor={telNumberFieldId}>Number</label>
-          <Field type="tel" name="telNumber" id={telNumberFieldId} />
+          <label htmlFor={telNumberFieldId} className={css.label}>Number</label>
+          <Field type="tel" name="telNumber" id={telNumberFieldId}  className={css.field} />
           <ErrorMessage
             name="telNumber"
             component="span"
@@ -91,8 +93,8 @@ function ContactForm({ isEditContact }) {
         </div>
 
         <div className={css.buttonContainer}>
-          {!isEditContact && <button type="submit">Add contact</button>}
-          {isEditContact && <button type="submit">Confirm changes</button>}
+          {!isEditContact && <button type="submit" className={css.button}>Add contact</button>}
+          {isEditContact && <button type="submit" className={css.button}>Confirm changes</button>}
         </div>
       </Form>
     </Formik>

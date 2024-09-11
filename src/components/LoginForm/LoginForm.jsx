@@ -64,7 +64,7 @@ export const LoginForm = () => {
           <ErrorMessage name="email" component="span" className={css.error} />
         </div>
         <div className={css.fieldContainer}>
-          <label className={css.label} htmlFor={passwordFieldId}>
+          <label className={css.label}  htmlFor={passwordFieldId}>
             Password
           </label>
           <Field

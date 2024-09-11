@@ -9,12 +9,14 @@ function SearchBox() {
   const updateSearch = (name) => dispatch(setFilters(name));
   return (
     <div className={css.search}>
-      <label htmlFor="search">Find contacts by name</label>
+       <h2 className={css.formHeader}>Find contacts</h2>
+      <label htmlFor="search" className={css.label}>Enter name or number</label>
 
       <input
         id="search"
         type="text"
         name="search"
+        className={css.field}
         value={searchFieldValue}
         onChange={(event) => updateSearch(event.target.value)}
       />
