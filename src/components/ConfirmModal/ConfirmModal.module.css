@@ -1,47 +1,33 @@
-/* .modalContent {
-  width: 300px;
-  height: 300px;
-    position: relative;
+.container{
+  width: 200px;
+  border-radius: 8px;
+  padding: 20px 20px;
   
-    margin: 0 auto;
-    padding: 2rem;
-    text-align: center;
-  
-    color: black;
-  }
-  
-  
-  .closeButton {
-    position: absolute;
-    top: 0;
-    right: 0;
-  
-    padding: 0px 0px;
-  
-    background-color: transparent;
-    color: black;
-  }
-  
-  .modalContent button:hover {
-    border: none;
-    border-color: transparent;
-  }
-   */
-  
+  box-shadow: 0px 0px 5px 0px rgba(32,37,49,1);
+}
   .description {
-    position: absolute;
-    top: 2%;
-  
-    left: 50%;
-    transform: translate(-50%, -50%);
-  
+    
     font-size: 16px;
-    margin: 0px;
+    margin: 0px 0px 30px 0px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    width: 800px;
+    text-align: center;
+    
   }
+  .buttonContainer {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+
+  }
+  .button{
+    padding: 8px 14px;
+  background-color: #202531;
+  color: white;
+  border-radius: 8px; 
+  cursor: pointer;
+   }
   
   
   

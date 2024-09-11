@@ -1,11 +1,11 @@
 .modalContent {
-    width: 300px;
-    height: 300px;
+    max-width: 400px;
+    
       position: relative;
     
       margin: 0 auto;
       padding: 2rem;
-      text-align: center;
+      
     
       color: black;
     }
@@ -20,11 +20,17 @@
     
       background-color: transparent;
       color: black;
+      border: none;
     }
     
-    .modalContent button:hover {
-      border: none;
-      border-color: transparent;
+    
+    .icon {
+     
+      
+  color:#1976d2;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
     }
     
     

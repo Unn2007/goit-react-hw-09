@@ -31,7 +31,7 @@ function ModalWindow({ children, selector, closeModal }) {
       >
         <div className={css.modalContent}>
           <button onClick={closeModal} className={css.closeButton}>
-            <FaRegWindowClose />
+            <FaRegWindowClose className={css.icon} />
           </button>
           <div>{children}</div>
         </div>

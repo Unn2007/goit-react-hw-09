@@ -1,7 +1,7 @@
 import { useDispatch,useSelector } from "react-redux";
 import {showConfirmModal,showEditModal} from '../../redux/contacts/slice'
 import css from "./Contact.module.css";
-import { FaPhoneAlt, FaUser } from "react-icons/fa";
+import { FaPhoneAlt, FaUser,FaSearch,FaRegEdit,FaRegTrashAlt } from "react-icons/fa";
 import ConfirmModal from '../../components/ConfirmModal/ConfirmModal'
 import EditModal from "../EditModal/EditModal";
 import { selectConfirmModal,selectEditModal} from '../../redux/contacts/selectors';
@@ -18,19 +18,19 @@ function Contact({ data: { id, name, number } }) {
     <>
     
     <div className={css.contact}>
-      <div>
+      <div className={css.contactInfo}>
         <div className={css.fieldContainer}>
-          <FaUser />
+          <FaUser className={css.icon} />
           <p>{name}</p>
         </div>
         <div className={css.fieldContainer}>
-          <FaPhoneAlt />
+          <FaPhoneAlt className={css.icon} />
           <p>{number}</p>
         </div>
       </div>
       <div className={css.buttonContainer}>
-        <button onClick={handleDelete}>Delete</button>
-        <button onClick={handleEdit}>Edit</button>
+        <button onClick={handleDelete} className={css.button}><FaRegTrashAlt/></button>
+        <button onClick={handleEdit} className={css.button}><FaRegEdit/></button>
       </div>
     </div>
     <div>{(id===selectedContact) && <ConfirmModal/>}</div>

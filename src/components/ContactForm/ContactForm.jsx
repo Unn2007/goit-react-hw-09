@@ -71,7 +71,8 @@ function ContactForm({ isEditContact }) {
       validationSchema={FeedbackSchema}
     >
       <Form className={css.form}>
-      <h2 className={css.formHeader}>Add contact</h2>
+     {(isEditContact)?( <h2 className={css.formHeader}>Edit contact</h2>):
+      <h2 className={css.formHeader}>Add contact</h2>}
         <div className={css.fieldContainer}>
           <label htmlFor={usernameFieldId} className={css.label}>Name</label>
           <Field type="text" name="username" id={usernameFieldId} className={css.field} />

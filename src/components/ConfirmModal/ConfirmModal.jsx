@@ -25,10 +25,12 @@ function ConfirmModal() {
 
   return (
     <ModalWindow selector={selectedContact} closeModal={hideModal}>
+      <div className={css.container}>
       <h2 className={css.description}>A You sure?</h2>
-      <div>
-        <button onClick={handleDelete}>Yes</button>
-        <button onClick={() => hideModal()}>No</button>
+      <div className={css.buttonContainer}>
+        <button onClick={handleDelete} className={css.button}>Yes</button>
+        <button onClick={() => hideModal()} className={css.button}>No</button>
+      </div>
       </div>
     </ModalWindow>
   );
