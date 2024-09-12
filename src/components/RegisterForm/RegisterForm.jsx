@@ -47,30 +47,52 @@ export const RegisterForm = () => {
       validationSchema={FeedbackSchema}
     >
       <Form className={css.form} autoComplete="off">
-      <h2 className={css.formHeader}>Registration</h2>
-      <div className={css.fieldContainer}>
-        <label className={css.label} htmlFor={nameFieldId}>
-          {" "}Username{" "}
-        </label>
-        <Field type="name" name="name" className={css.field} id={nameFieldId} />
-        <ErrorMessage name="name" component="span" className={css.error}/>
+        <h2 className={css.formHeader}>Registration</h2>
+        <div className={css.fieldContainer}>
+          <label className={css.label} htmlFor={nameFieldId}>
+            {" "}
+            Username{" "}
+          </label>
+          <Field
+            type="name"
+            name="name"
+            className={css.field}
+            id={nameFieldId}
+          />
+          <ErrorMessage name="name" component="span" className={css.error} />
         </div>
         <div className={css.fieldContainer}>
-        <label className={css.label} htmlFor={emailFieldId}>
-          Email
-        </label>
-        <Field type="email" name="email" className={css.field} id={emailFieldId} />
-        <ErrorMessage name="email" component="span"  className={css.error}/>
+          <label className={css.label} htmlFor={emailFieldId}>
+            Email
+          </label>
+          <Field
+            type="email"
+            name="email"
+            className={css.field}
+            id={emailFieldId}
+          />
+          <ErrorMessage name="email" component="span" className={css.error} />
         </div>
         <div className={css.fieldContainer}>
-        <label className={css.label} htmlFor={passwordFieldId}>
-          Password
-        </label>
-        <Field type="password" name="password" className={css.field} id={passwordFieldId} />
-        <ErrorMessage name="password" component="span" className={css.error} />
+          <label className={css.label} htmlFor={passwordFieldId}>
+            Password
+          </label>
+          <Field
+            type="password"
+            name="password"
+            className={css.field}
+            id={passwordFieldId}
+          />
+          <ErrorMessage
+            name="password"
+            component="span"
+            className={css.error}
+          />
         </div>
         <div className={css.buttonContainer}>
-        <button type="submit" className={css.button}>Register</button>
+          <button type="submit" className={css.button}>
+            Register
+          </button>
         </div>
       </Form>
     </Formik>

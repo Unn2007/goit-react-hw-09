@@ -15,7 +15,7 @@ function ConfirmModal() {
   const handleDelete = () => {
     dispatch(deleteContact(selectedContact)).then((result) => {
       if (deleteContact.fulfilled.match(result)) {
-        toast.success("Контакт успішно видалений", {
+        toast.success("Contact deleted successfully", {
           duration: 2000,
           position: "top-center",
         });
@@ -26,11 +26,15 @@ function ConfirmModal() {
   return (
     <ModalWindow selector={selectedContact} closeModal={hideModal}>
       <div className={css.container}>
-      <h2 className={css.description}>A You sure?</h2>
-      <div className={css.buttonContainer}>
-        <button onClick={handleDelete} className={css.button}>Yes</button>
-        <button onClick={() => hideModal()} className={css.button}>No</button>
-      </div>
+        <h2 className={css.description}>A You sure?</h2>
+        <div className={css.buttonContainer}>
+          <button onClick={handleDelete} className={css.button}>
+            Yes
+          </button>
+          <button onClick={() => hideModal()} className={css.button}>
+            No
+          </button>
+        </div>
       </div>
     </ModalWindow>
   );

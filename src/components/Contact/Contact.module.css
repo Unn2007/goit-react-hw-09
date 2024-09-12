@@ -4,8 +4,8 @@
   align-items: center;
   column-gap: 5px;
   border-radius: 8px;
- 
-  box-shadow: 0px 0px 3px 0px rgba(32,37,49,1);
+
+  box-shadow: 0px 0px 3px 0px rgba(32, 37, 49, 1);
   padding: 5px 10px;
 }
 .fieldContainer {
@@ -14,22 +14,21 @@
   align-items: center;
 }
 .icon {
-   color: #afb5c3;
+  color: #afb5c3;
 }
 
 .contactInfo {
   display: flex;
   flex-direction: column;
- justify-content: space-between;
- row-gap: 5px;
-
+  justify-content: space-between;
+  row-gap: 5px;
 }
 .name {
   width: 110px;
   white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    margin: 0px 0px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0px 0px;
 }
 
 .buttonContainer {
@@ -43,6 +42,5 @@
   border: none;
   background-color: transparent;
   cursor: pointer;
-  color:#1976d2;
-
+  color: #1976d2;
 }

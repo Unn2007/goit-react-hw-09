@@ -1,6 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { logOut } from '../auth/operations';
-import { fetchContacts, addContact, deleteContact, editContact } from "./operations";
+import { logOut } from "../auth/operations";
+import {
+  fetchContacts,
+  addContact,
+  deleteContact,
+  editContact,
+} from "./operations";
 
 const handlePending = (state) => {
   state.loading = true;
@@ -17,24 +22,22 @@ const contactsSlice = createSlice({
     items: [],
     loading: false,
     error: null,
-    isConfirmModal:"",
-    isEditModal:{},
-    
+    isConfirmModal: "",
+    isEditModal: {},
   },
   reducers: {
-    showConfirmModal: (state,action) => {
-      state.isConfirmModal = action.payload; 
+    showConfirmModal: (state, action) => {
+      state.isConfirmModal = action.payload;
     },
     hideConfirmModal: (state) => {
-      state.isConfirmModal = ""; 
+      state.isConfirmModal = "";
     },
-    showEditModal: (state,action) => {
-      state.isEditModal = action.payload; 
+    showEditModal: (state, action) => {
+      state.isEditModal = action.payload;
     },
     hideEditModal: (state) => {
-      state.isEditModal = {}; 
+      state.isEditModal = {};
     },
-    
   },
   extraReducers: (builder) => {
     builder
@@ -69,18 +72,21 @@ const contactsSlice = createSlice({
         const index = state.items.findIndex(
           (contact) => contact.id === action.payload.id
         );
-        state.items[index].name=action.payload.name;
-        state.items[index].number=action.payload.number;
-        state.isEditModal="";
-      
+        state.items[index].name = action.payload.name;
+        state.items[index].number = action.payload.number;
+        state.isEditModal = "";
       })
       .addCase(editContact.rejected, handleRejected)
       .addCase(logOut.fulfilled, (state, action) => {
         state.items = [];
-        
-      })
+      });
   },
 });
 
-export const { showConfirmModal, hideConfirmModal,showEditModal,hideEditModal } = contactsSlice.actions;
+export const {
+  showConfirmModal,
+  hideConfirmModal,
+  showEditModal,
+  hideEditModal,
+} = contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;

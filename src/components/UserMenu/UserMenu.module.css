@@ -10,10 +10,10 @@
 .username {
   font-weight: 700;
 }
- .button{
+.button {
   padding: 6px 14px;
-  color:#1976d2;
+  color: #1976d2;
   font-weight: 500;
   border-radius: 6px;
   cursor: pointer;
- }
+}

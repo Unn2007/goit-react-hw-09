@@ -9,8 +9,10 @@ function SearchBox() {
   const updateSearch = (name) => dispatch(setFilters(name));
   return (
     <div className={css.search}>
-       <h2 className={css.formHeader}>Find contacts</h2>
-      <label htmlFor="search" className={css.label}>Enter name or number</label>
+      <h2 className={css.formHeader}>Find contacts</h2>
+      <label htmlFor="search" className={css.label}>
+        Enter name or number
+      </label>
 
       <input
         id="search"
